@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,11 @@ Route::get('/', function () {
 })->name('index');
 Route::group(['prefix'=>'supplier'], function(){
     Route::get('/', [SupplierController::class , 'index'])->name('suppliers.index');
-    Route::post('/', [SupplierController::class , 'storeSupplier'])->name('suppliers.create');
+    Route::post('/', [SupplierController::class , 'storeSuppliers'])->name('suppliers.create');
     Route::get('list', [SupplierController::class , 'getSuppliers'])->name('suppliers.list');
+});
+Route::group(['prefix'=>'product'], function(){
+    Route::get('/', [ProductController::class , 'index'])->name('products.index');
+    Route::post('/', [ProductController::class , 'storeProducts'])->name('products.create');
+    Route::get('list', [ProductController::class , 'getProducts'])->name('products.list');
 });

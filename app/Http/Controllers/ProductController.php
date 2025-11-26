@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Suppliers;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
-class SupplierController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.suppliers');
+        return view('admin.products');
     }
     /**
      * Fetch a listing of the resource.
      */
-    public function getSuppliers()
+    public function getProducts()
     {
-        $data = Suppliers::paginate(25);
+        $data = Products::paginate(25);
 
         return response()->json([
             'data' => $data,
-            'message' => 'Suppliers fetched successfully!',
+            'message' => 'OK!',
             'success' => true
         ], 200);
     }
@@ -31,28 +31,28 @@ class SupplierController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
-
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function storeSuppliers(Request $request)
+    public function storeProducts(Request $request)
     {
-        $data = new Suppliers();
+        $validated = $request->validate([
+            'name'           => 'required|string|max:255',
+            'sku'            => 'nullable|string|max:255|unique:products,sku',
+            'purchase_price' => 'required|numeric|min:0',
+            'sale_price'     => 'required|numeric|min:0',
+            'quantity'       => 'required|numeric|min:0',
+            'unit'           => 'required|string|max:50',
+        ]);
 
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->phone = $request->phone;
-        $data->address = $request->address;
-        $data->company_name = $request->company_name;
-        $data->opening_balance = $request->opening_balance;
+        Products::create($validated);
 
-        $data->save();
-
-        return redirect()->back()->with('success', 'Supplier Added!');
+        return redirect()->back()->with('success', 'Product Added!');
     }
 
     /**

@@ -53,6 +53,16 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link justify-content-between{{ Route::is('products.index') ? ' active' : '' }}" href="{{ route('products.index') }}">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="d-flex">
+                                        <i class="ti ti-aperture"></i>
+                                    </span>
+                                    <span class="hide-menu">Products</span>
+                                </div>
+                            </a>
+                        </li>
 
                         <li>
                             <span class="sidebar-divider lg"></span>

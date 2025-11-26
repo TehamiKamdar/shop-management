@@ -18,7 +18,7 @@ return new class extends Migration
             $table->float('purchase_price', 8, 2)->required();
             $table->float('sale_price', 8, 2)->required();
             $table->float('quantity', 5, 2)->required();
-            $table->float('unit', 5, 2)->required();
+            $table->text('unit')->required();
             $table->timestamps();
         });
     }
