@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('phone')->required();
             $table->text('email')->nullable();
             $table->text('address')->required();
-            $table->int('opening_balance')->required();
+            $table->integer('opening_balance')->nullable();
             $table->timestamps();
         });
     }

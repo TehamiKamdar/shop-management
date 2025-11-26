@@ -3192,6 +3192,7 @@ textarea.form-control-lg {
   background-color: var(--bs-btn-bg);
   box-shadow: var(--bs-btn-box-shadow);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-bottom: 1rem;
 }
 @media (prefers-reduced-motion: reduce) {
   .btn {
@@ -5181,10 +5182,15 @@ textarea.form-control-lg {
   background-color: var(--bs-alert-bg);
   border: var(--bs-alert-border);
   border-radius: var(--bs-alert-border-radius);
+  box-shadow: 1px 1px 2px #bcbcbc;
 }
 
 .alert-heading {
   color: inherit;
+}
+
+.alert-sm{
+    padding: 8px !important;
 }
 
 .alert-link {
@@ -5193,14 +5199,27 @@ textarea.form-control-lg {
 }
 
 .alert-dismissible {
-  padding-right: 3rem;
+  padding-right: 3rem !important;
 }
+
+.alert-sm.alert-dismissible {
+  padding-right: 4rem !important;
+}
+
 .alert-dismissible .btn-close {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 2;
   padding: 1.25rem 1rem;
+}
+
+.alert-sm.alert-dismissible .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  padding: .75rem 1rem;
 }
 
 .alert-primary {
@@ -5218,9 +5237,9 @@ textarea.form-control-lg {
 }
 
 .alert-success {
-  --bs-alert-color: var(--bs-success-text-emphasis);
-  --bs-alert-bg: var(--bs-success-bg-subtle);
-  --bs-alert-border-color: var(--bs-success-border-subtle);
+  --bs-alert-color: #000;
+  --bs-alert-bg: #69ff96;
+  --bs-alert-border-color: #005331;
   --bs-alert-link-color: var(--bs-success-text-emphasis);
 }
 

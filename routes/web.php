@@ -19,4 +19,6 @@ Route::get('/', function () {
 })->name('index');
 Route::group(['prefix'=>'supplier'], function(){
     Route::get('/', [SupplierController::class , 'index'])->name('suppliers.index');
+    Route::post('/', [SupplierController::class , 'storeSupplier'])->name('suppliers.create');
+    Route::get('list', [SupplierController::class , 'getSuppliers'])->name('suppliers.list');
 });
