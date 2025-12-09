@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}">
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="card">
@@ -74,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="">
+                <div>
                     <table class="table table-dark table-striped-rows table-responsive" id="table">
                         <thead>
                             <tr>
@@ -95,45 +99,42 @@
 @endsection
 
 @section('scripts')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-<script>
-$(document).ready(function () {
-    $('#table').DataTable({
-        processing: true,
-        serverSide: false, // agar pagination server pe chahiye to true kardena
-        ajax: {
-            url: "{{ route('suppliers.list') }}",
-            type: "GET",
-            dataSrc: "data.data"  // because your response: { data: [...] }
-        },
-        columns: [
-            { data: "id" },
-            { data: "name" },
-            { data: "phone" },
-            { data: "company_name" },
-            {
-                data: "opening_balance",
-                render: function(value) {
-                    return value ?? 0;
-                }
-            },
-            { data: "address" },
-            {
-                data: "updated_at",
-                render: function(value) {
-                    const d = new Date(value);
-                    return d.getDate().toString().padStart(2, '0') + '-' +
-                        (d.getMonth() + 1).toString().padStart(2, '0') + '-' +
-                        d.getFullYear();
-                }
-            }
-        ]
-    });
-});
-</script>
+    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                processing: true,
+                serverSide: false, // agar pagination server pe chahiye to true kardena
+                ajax: {
+                    url: "{{ route('suppliers.list') }}",
+                    type: "GET",
+                    dataSrc: "data.data"  // because your response: { data: [...] }
+                },
+                columns: [
+                    { data: "id" },
+                    { data: "name" },
+                    { data: "phone" },
+                    { data: "company_name" },
+                    {
+                        data: "opening_balance",
+                        render: function(value) {
+                            return value ?? 0;
+                        }
+                    },
+                    { data: "address" },
+                    {
+                        data: "updated_at",
+                        render: function(value) {
+                            const d = new Date(value);
+                            return d.getDate().toString().padStart(2, '0') + '-' +
+                                (d.getMonth() + 1).toString().padStart(2, '0') + '-' +
+                                d.getFullYear();
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
 
 @endsection

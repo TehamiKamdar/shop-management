@@ -28,6 +28,32 @@ class SupplierController extends Controller
         ], 200);
     }
 
+    public function select2(Request $request){
+        $search = $request->get('q', ''); // Select2 sends 'q' parameter
+
+        $query = Suppliers::query();
+
+        if($search){
+            $query->where('name', 'like', "%{$search}%");
+        }
+
+        $suppliers = $query->paginate(25);
+
+        $results = $suppliers->map(function($supplier){
+            return [
+                'id' => $supplier->id,
+                'text' => $supplier->name, // ya company_name agar chaho
+            ];
+        });
+
+        return response()->json([
+            'results' => $results,
+            'pagination' => [
+                'more' => $suppliers->hasMorePages()
+            ]
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

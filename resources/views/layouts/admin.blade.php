@@ -74,7 +74,7 @@
                             </a>
                             <ul class="collapse first-level">
                                 <li class="sidebar-item">
-                                    <a class="sidebar-link justify-content-between" href="#">
+                                    <a class="sidebar-link justify-content-between{{ Route::is('purchases.index') ? ' active' : '' }}" href="{{ route('purchases.index') }}">
                                         <div class="d-flex align-items-center gap-2">
                                             <div class="round-16 d-flex align-items-center justify-content-center">
                                                 <i class="ti ti-arrow-badge-right"></i>

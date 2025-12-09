@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('company_name')->nullable();
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->integer('opening_balance')->nullable();
             $table->timestamps();
         });
