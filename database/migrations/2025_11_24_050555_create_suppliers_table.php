@@ -13,13 +13,21 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->required();
-            $table->text('company_name')->nullable();
-            $table->text('phone')->required();
-            $table->text('email')->nullable();
-            $table->text('address')->required();
+            $table->string('name');
+            $table->string('company_name')->nullable();
+            $table->string('phone');
+            $table->string('email')->nullable();
+            $table->string('address');
             $table->integer('opening_balance')->nullable();
             $table->timestamps();
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('suppliers');
     }
 };

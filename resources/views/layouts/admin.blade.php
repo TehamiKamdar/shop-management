@@ -63,6 +63,50 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link justify-content-between has-arrow">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="d-flex">
+                                        <i class="ti ti-aperture"></i>
+                                    </span>
+                                    <span class="hide-menu">Purchases</span>
+                                </div>
+                            </a>
+                            <ul class="collapse first-level">
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link justify-content-between" href="#">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-arrow-badge-right"></i>
+                                            </div>
+                                            <span class="hide-menu">List</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link justify-content-between" href="#">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-arrow-badge-right"></i>
+                                            </div>
+                                            <span class="hide-menu">Purchase Invoices</span>
+                                        </div>
+
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link justify-content-between" href="#">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="round-16 d-flex align-items-center justify-content-center">
+                                                <i class="ti ti-arrow-badge-right"></i>
+                                            </div>
+                                            <span class="hide-menu">Purchase Items</span>
+                                        </div>
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
                         <li>
                             <span class="sidebar-divider lg"></span>
@@ -303,8 +347,6 @@
     <!-- solar icons -->
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
-@yield('scripts')
-
 <script>
   async function loadMiniWeather() {
     const apiKey = "cbb589cfee1d493998b61809250310";
@@ -345,3 +387,4 @@
   // Update clock every 1 sec
   setInterval(updateMiniClock, 1000);
 </script>
+@yield('scripts')
